@@ -5,7 +5,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'npm install'
+
+                sh 'apt-get update && apt-get install npm -y'
+
+                
             }
         }
         stage('Test') {
