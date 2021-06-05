@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-
+                sh 'apt-get update && apt-get install nodejs'
                 sh 'apt-get update && apt-get install npm -y'
 
                 
