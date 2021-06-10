@@ -20,7 +20,6 @@ tools {nodejs "NodeJS"}
     }
     post{
     	failure{
-			slackUploadFile filePath: "logs.txt", initialComment:  "HEY HEY"
 			slackSend channel:'chatapp', color: 'good', message: "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}* ${env.JOB_URL}", tokenCredentialid: 'slack-notification'
 		}
 		success{
