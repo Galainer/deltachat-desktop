@@ -1,21 +1,21 @@
 pipeline {
     agent any
+    
+tools {nodejs "nodejs"}
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                sh 'apt-get update && apt-get install nodejs'
-                sh 'apt-get update && apt-get install npm -y'
-                sh 'npm install npm@latest -g'
-                sh 'node -v'
+                echo 'Building...'
+				sh 'npm install'
+				sh 'npm audit fix'
                 
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'npm test > tests_log.txt'
+                sh 'npm run test'
             }
         }
         stage('Deploy') {
@@ -36,7 +36,7 @@ pipeline {
     	unstable{
     		echo 'Unstable....'
     		emailext attachLog: true,
-    		attachmentsPattern: 'tests_log.txt',
+    		attachmentsPattern: '',
                 body: "Tests failed for job ${env.JOB_NAME}",
                 subject: "Tests failed.",
                 to: 'kijek.igor@gmail.com'
