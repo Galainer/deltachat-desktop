@@ -20,7 +20,7 @@ tools {nodejs "NodeJS"}
     }
     post{
     	failure{
-			echo 'logs.txt'
+			echo logs.txt
 			slackSend channel:'chatapp', color: 'good', message: "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*", tokenCredentialid: 'slack-notification'
 		}
 		success{
