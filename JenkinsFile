@@ -14,18 +14,18 @@ tools {nodejs "NodeJS"}
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'npm run test-unit'
+                sh 'npm run test-unit > logs.txt'
             }
         }
     }
     post{
     	failure{
 			
-			slackSend channel:'chatapp', color: 'good', message: "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*", tokenCredentialid: 'slack-notification'
+			slackSend channel:'chatapp', color: 'good', message: "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*",attachments: 'logs.txt', tokenCredentialid: 'slack-notification'
 		}
 		success{
 		
-			slackSend channel:'chatapp', color: 'good', message: "Build Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*", tokenCredentialid: 'slack-notification'
+			slackSend channel:'chatapp', color: 'good', message: "Build Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*", attachments: 'logs.txt', tokenCredentialid: 'slack-notification'
 		}
     }
 }
