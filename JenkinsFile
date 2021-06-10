@@ -20,10 +20,10 @@ tools {nodejs "NodeJS"}
     }
     post{
     	failure{
-			slackSend channel:'chatapp', color: 'good', message: 'Hope it works', tokenCredentialid: 'slack-notification'
+			slackSend channel:'chatapp', color: 'good', message: 'Hope it works, failure', tokenCredentialid: 'slack-notification'
 		}
 		success{
-			slackSend channel:'chatapp', color: 'good', message: 'Hope it works', tokenCredentialid: 'slack-notification'
+			slackSend channel:'chatapp', color: 'good', message: 'Hope it works, succes', tokenCredentialid: 'slack-notification'
 		}
     }
 }
