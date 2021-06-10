@@ -14,7 +14,7 @@ tools {nodejs "NodeJS"}
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'npm test'
+                sh 'npm run test'
             }
         }
         stage('Deploy') {
