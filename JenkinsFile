@@ -20,9 +20,11 @@ tools {nodejs "NodeJS"}
     }
     post{
     	failure{
+			echo "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*"
 			slackSend channel:'chatapp', color: 'good', message: 'Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*', tokenCredentialid: 'slack-notification'
 		}
 		success{
+		echo "Build succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*"
 			slackSend channel:'chatapp', color: 'good', message: 'Build Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*', tokenCredentialid: 'slack-notification'
 		}
     }
