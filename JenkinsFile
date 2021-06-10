@@ -14,7 +14,7 @@ tools {nodejs "NodeJS"}
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'npm run test-unit > logs.txt'
+                sh 'npm run test-misc'
             }
         }
     }
