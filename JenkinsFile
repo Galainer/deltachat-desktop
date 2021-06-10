@@ -1,3 +1,5 @@
+@Library('jenkins-shared-library')_
+
 pipeline {
     agent any
     
@@ -20,18 +22,12 @@ tools {nodejs "NodeJS"}
     }
     post{
     	failure{
-			emailext attachLog: true,
-				body: "${currentBuild.currentResult}: ${currentBuild.fullDisplayName}",
-				to: 'manofmadnes@gmail.com',
-				recipientProviders: [developers(), requestor()],
-				subject: "Jenkins build failed, ${env.BUILD_NUMBER}"
+			slackNotifier(currentBuild.currentResult)
+            		cleanWs()
 		}
 		success{
-			emailext attachLog: true,
-				body: "${currentBuild.currentResult}: ${currentBuild.fullDisplayName}",
-				to: 'manofmadnes@gmail.com',
-				recipientProviders: [developers(), requestor()],
-				subject: "Jenkins build succeeded, ${env.BUILD_NUMBER}"
+			slackNotifier(currentBuild.currentResult)
+           		 cleanWs()
 		}
     }
 }
