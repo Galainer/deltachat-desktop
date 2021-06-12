@@ -11,7 +11,7 @@ tools {nodejs "NodeJS"}
             steps 
 	    {
                 echo 'Building...'  
-		sh 'git checkout master'
+		sh 'git status'
 		sh 'git pull'
 		sh 'npm install'
             }
