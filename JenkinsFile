@@ -36,12 +36,12 @@ tools {nodejs "NodeJS"}
     	{
     	failure
 	{
-		slackSend channel:'chatapp', color: 'good', message: "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
+		slackSend channel:'chatapp', color: 'good', message: "Test failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
 	}
 	success
 	{
 		
-		slackSend channel:'chatapp', color: 'good', message: "Build Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
+		slackSend channel:'chatapp', color: 'good', message: "Test Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
 	}
     }
         }
@@ -50,12 +50,12 @@ tools {nodejs "NodeJS"}
     {
     	failure
 	{
-		slackSend channel:'chatapp', color: 'good', message: "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
+		slackSend channel:'chatapp', color: 'good', message: "Pipeline failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
 	}
 	success
 	{
 		
-		slackSend channel:'chatapp', color: 'good', message: "Build Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
+		slackSend channel:'chatapp', color: 'good', message: "Pipeline Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
 	}
     }
 }
