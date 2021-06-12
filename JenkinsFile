@@ -13,7 +13,6 @@ tools {nodejs "NodeJS"}
                 echo 'Building...'  
 		sh 'git checkout master'
 		sh 'git pull'
-		sh 'npm install'
 		sh 'npm run build'
             }
 	post
