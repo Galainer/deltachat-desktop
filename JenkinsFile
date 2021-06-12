@@ -10,16 +10,7 @@ tools {nodejs "NodeJS"}
 			
                 
             }
-	    post{
-                        failure
-                            {
-                            slackSend channel:'chatapp', color: 'good', message: "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
-                            }
-                        success
-                            {
-                            slackSend channel:'chatapp', color: 'good', message: "Build Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'             
-                            }
-                        }
+	   
 	    
 	
     }
@@ -30,7 +21,10 @@ tools {nodejs "NodeJS"}
             
 	   
         }
-	post{
+	
+	
+    }
+    post{
                         failure
                             {
                             slackSend channel:'chatapp', color: 'good', message: "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
@@ -40,7 +34,5 @@ tools {nodejs "NodeJS"}
                             slackSend channel:'chatapp', color: 'good', message: "Build Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'             
                             }
                         }
-	
-    }
     
 }
