@@ -11,6 +11,9 @@ tools {nodejs "NodeJS"}
             steps 
 	    {
                 echo 'Building...'  
+		sh 'git status'
+		sh 'git pull'
+		sh 'npm install'
             }
 	post
     	{
