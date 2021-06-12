@@ -14,7 +14,7 @@ tools {nodejs "NodeJS"}
 		sh 'git checkout master'
 		sh 'git pull'
 		sh 'npm install'
-		sh 'npm build'
+		sh 'npm run build'
             }
 	post
     	{
