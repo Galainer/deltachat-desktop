@@ -11,14 +11,7 @@ tools {nodejs "NodeJS"}
                 
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sh 'npm run test-misc'
-            }
-        }
-    }
-    post{
+	post{
     	failure{
 			slackSend channel:'chatapp', color: 'good', message: "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
 		}
@@ -27,4 +20,21 @@ tools {nodejs "NodeJS"}
 			slackSend channel:'chatapp', color: 'good', message: "Build Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
 		}
     }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                sh 'npm run test-misc'
+            }
+        }
+	post{
+    	failure{
+			slackSend channel:'chatapp', color: 'good', message: "Build failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
+		}
+		success{
+		
+			slackSend channel:'chatapp', color: 'good', message: "Build Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
+		}
+    }
+    }
+    
 }
