@@ -37,16 +37,33 @@ tools {nodejs "NodeJS"}
             }
 	post
     	{
-    	failure
+    		failure
+		{
+			slackSend channel:'chatapp', color: 'good', message: "Test failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
+		}
+		success
+		{
+			slackSend channel:'chatapp', color: 'good', message: "Test Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
+		}
+    	}
+        }
+	stage('Deploy') 
 	{
-		slackSend channel:'chatapp', color: 'good', message: "Test failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
-	}
-	success
-	{
-		
-		slackSend channel:'chatapp', color: 'good', message: "Test Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
-	}
-    }
+            steps 
+	    {
+                echo 'Deploying...'
+            }
+	post
+    	{
+    		failure
+		{
+			slackSend channel:'chatapp', color: 'good', message: "Deploy failure, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs  ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
+		}
+		success
+		{
+			slackSend channel:'chatapp', color: 'good', message: "Deploy Succes, *${currentBuild.currentResult}:* *${currentBuild.fullDisplayName}*\n URL to Logs ${BUILD_URL}/console", tokenCredentialid: 'slack-notification'
+		}
+    	}
         }
     }
     post
